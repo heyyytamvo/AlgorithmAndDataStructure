@@ -22,7 +22,7 @@ int numberOfNodes, numberOfEdges;
 
 void input(){
     //Graph = vector< vector< pair<int, int> > > (MAX, vector< pair<int, int> >());
-    cin >> numberOfEdges;
+    cin >> numberOfNodes >> numberOfEdges;
     for (int i = 0; i < numberOfEdges; i++){
         int node1, node2, length;
 
@@ -34,7 +34,7 @@ void input(){
 bool BellmanFord(int vertex){
     Dist[vertex] = 0;
 
-    for (int i = 0; i < numberOfEdges; i++){
+    for (int i = 1; i < numberOfNodes - 1; i++){
         for (int j = 0; j < numberOfEdges; j++){
             int nodeA = Data[j].node1;
             int nodeB = Data[j].node2;
@@ -53,10 +53,10 @@ bool BellmanFord(int vertex){
         int w = Data[i].length;
 
         if (Dist[u] != INF && Dist[u] + w < Dist[v]){
-            return false;
+            return true;
         } 
     }
-    return true;
+    return false;
 }
 
 void printPath(int start, int end){
@@ -92,10 +92,16 @@ int main(){
     input();
     bool hasNegativeWeight = BellmanFord(0);
 
-    cout << "Cost is: " << Dist[4] << endl;
-    cout << "Path is: " << endl;
+    
+    if (hasNegativeWeight){
+        cout << "Yes, including negative cycle";
+    }else{
+        cout << "Cost is: " << Dist[4] << endl;
+        cout << "Path is: " << endl;
     //cout << path[4];
-    printPath(0, 4);
+        printPath(0, 4);
+    }
+    
 
     return 0;
 }

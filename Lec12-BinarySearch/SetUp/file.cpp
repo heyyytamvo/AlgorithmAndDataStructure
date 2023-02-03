@@ -32,7 +32,7 @@ int binarySearchFirst(vector<int> a, int left, int right, int x){
             return mid;
         }
         
-        if (x > a[mid]){
+        if (x < a[mid]){
             return binarySearchFirst(a, mid + 1, right, x);
         }else{
             return binarySearchFirst(a, left, mid - 1, x);

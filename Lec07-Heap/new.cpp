@@ -16,7 +16,7 @@ bool wayToSort(const Job &x, const Job &y) {
     return x.d < y.d;
 }
 
-int main() {
+ int main() {
     int t, N;
     cin >> t;
 

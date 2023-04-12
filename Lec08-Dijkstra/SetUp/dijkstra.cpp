@@ -11,7 +11,7 @@ int path[MAX];
 int numberOfVertices, weight, startVertex, endVertex;
 
 //pair : vertex, distance
-
+//adjacent edges list
 struct option {
     bool operator()(
         pair<int, int> const& a,
@@ -49,8 +49,8 @@ void input(){
     Graph = vector< vector< pair<int, int> > > (MAX + 5, vector< pair<int, int> >());
     memset(path, -1, sizeof(path));
     cin >> numberOfVertices;
-    for (int i = 1; i <= numberOfVertices; i++){
-        for (int j = 1; j <= numberOfVertices; j++){
+    for (int i = 0; i < numberOfVertices; i++){
+        for (int j = 0; j < numberOfVertices; j++){
             cin >> weight;
 
             if (weight > 0){

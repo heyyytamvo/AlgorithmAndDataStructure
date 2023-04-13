@@ -25,6 +25,10 @@ Node *NewNode(){
 bool findWord(Node* root, string word, int index){
     int character = word[index] - 'a';
 
+    if (index == word.size() - 1 && root->child[character]->countWord > 0){
+        return true;
+    }
+
     if (root->child[character] == NULL){
         return false;
     }else{
